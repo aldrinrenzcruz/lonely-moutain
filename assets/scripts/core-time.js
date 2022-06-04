@@ -37,7 +37,7 @@ function startTimer() {
     } else {
       gameHoursUI.innerText = `${gameHours}`;
     }
-    // Resets game hour
+    // Resets game hour / Add Day + 1
     if (gameHours > 23) {
       gameHours = 0;
       gameDays += 1;
@@ -72,6 +72,10 @@ function pauseGame() {
 function gameHoursTicker() {
   gameHours += 1;
 }
+
+addEventListener('keypress', function (e) {
+  if (event.code === 'Space') { togglePausePlay(); }
+});
 
 function togglePausePlay() {
   if (gameStatus == 'running') {
