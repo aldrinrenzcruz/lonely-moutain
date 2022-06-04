@@ -21,21 +21,6 @@ let savedHours = parseInt(localStorage.getItem('elapsed_game_hours'));
 let savedDays = parseInt(localStorage.getItem('elapsed_game_days'));
 let savedYears = parseInt(localStorage.getItem('elapsed_game_years'));
 
-window.addEventListener('load', (event) => {
-  initGame();
-});
-
-function initGame() {
-  timerInterval = setInterval(function () {
-    gameStatus = 'running'
-    initGameBackground();
-    initYears();
-    initDays();
-    initHours();
-    initMinutes();
-  }, gameSpeed);
-}
-
 function initYears() {
   if (localStorage.getItem('elapsed_game_years') === null) {
     localStorage.setItem('elapsed_game_years', 0);
