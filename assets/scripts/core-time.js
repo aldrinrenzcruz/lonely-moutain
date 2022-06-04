@@ -25,16 +25,7 @@ const pausePlayBtn = document.querySelector('#pause-play-btn');
 let gameSpeed = 625;
 let gameStatus = 'paused';
 
-function initYears() {
-  if (localStorage.getItem('elapsed_game_years') === null) {
-    localStorage.setItem('elapsed_game_years', 0);
-  }
-}
-
 function initDays() {
-  if (localStorage.getItem('elapsed_game_days') === null) {
-    localStorage.setItem('elapsed_game_days', 0);
-  }
   // Reset Year Cycle
   if (savedDays > 365) {
     savedDays = 0;
@@ -44,9 +35,6 @@ function initDays() {
 }
 
 function initHours() {
-  if (localStorage.getItem('elapsed_game_hours') === null) {
-    localStorage.setItem('elapsed_game_hours', 6);
-  }
   // Reset Day Cycle
   if (savedHours > 23) {
     savedHours = 0;
@@ -58,9 +46,6 @@ function initHours() {
 function initMinutes() {
   if (localStorage.getItem('elapsed_game_minutes') !== null) {
     localStorage.setItem('elapsed_game_minutes', savedMinutes++);
-  }
-  if (localStorage.getItem('elapsed_game_minutes') === null) {
-    localStorage.setItem('elapsed_game_minutes', 0);
   }
   if (savedMinutes > 59) {
     savedMinutes = 0;
