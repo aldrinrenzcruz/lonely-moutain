@@ -9,16 +9,15 @@
  */
 
 const gameMinutesUI = document.querySelector('#game-minutes-ui');
-const gameHoursUI = document.querySelector('#game-hours-ui');
+const savedHoursUI = document.querySelector('#game-hours-ui');
 const gameDaysUI = document.querySelector('#game-days-ui');
 const pausePlayBtn = document.querySelector('#pause-play-btn');
 
-let gamePace = 625;
+let gameSpeed = 625;
 let gameMinutes = 0;
-let gameHours = 0;
-let gameDays = 0;
+let savedHours = parseInt(localStorage.getItem('elapsed_game_hours'));
+let savedDays = parseInt(localStorage.getItem('elapsed_game_days'));
 
-let timerInterval;
 let gameStatus = 'paused';
 
 window.addEventListener('load', (event) => {
@@ -28,40 +27,58 @@ window.addEventListener('load', (event) => {
 function startTimer() {
   timerInterval = setInterval(function () {
     gameMinutes++;
-    updateGameBackground();
     gameStatus = 'running'
+    initGameBackground();
+    initDays();
+    initHours();
+    initMinutes();
+  }, gameSpeed);
+}
 
-    // Pad 0 for minutes if less than 10
-    if (gameHours < 10) {
-      gameHoursUI.innerText = `0${gameHours}`;
-    } else {
-      gameHoursUI.innerText = `${gameHours}`;
-    }
-    // Resets game hour / Add Day + 1
-    if (gameHours > 23) {
-      gameHours = 0;
-      gameDays += 1;
-      gameDaysUI.innerHTML = `Day ${gameDays} <br>`;
-    }
+function initDays() {
+  if (localStorage.getItem('elapsed_game_days') === null) {
+    localStorage.setItem('elapsed_game_days', 0);
+    gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
+  } else {
+    gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
+  }
+}
 
-    if (gameMinutes > 59) {
-      gameMinutes = 0;
-      gameMinutesUI.innerText = `00`;
-      gameHoursTicker();
+function initHours() {
+  if (localStorage.getItem('elapsed_game_hours') === null) {
+    localStorage.setItem('elapsed_game_hours', 0);
+    savedHoursUI.innerText = `${savedHours}`;
+  } else {
+    savedHoursUI.innerText = `${savedHours}`;
+  }
+
+  // Pad 0 for minutes if less than 10
+  if (savedHours < 10) {
+    savedHoursUI.innerText = `0${savedHours}`;
+  } else {
+    savedHoursUI.innerText = `${savedHours}`;
+  }
+
+  // Reset Day Cycle / Increment Day + 1
+  if (savedHours > 23) {
+    savedHours = 0;
+    localStorage.setItem('elapsed_game_days', savedDays += 1);
+    gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
+  }
+}
+
+function initMinutes() {
+  if (gameMinutes > 59) {
+    gameMinutes = 0;
+    gameMinutesUI.innerText = `00`;
+    localStorage.setItem('elapsed_game_hours', savedHours += 1);
+  } else {
+    if (gameMinutes < 10) {
+      gameMinutesUI.innerText = `0${gameMinutes}`;
     } else {
-      if (gameMinutes < 10) {
-        gameMinutesUI.innerText = `0${gameMinutes}`;
-      } else {
-        gameMinutesUI.innerText = `${gameMinutes}`;
-      }
-      if (gameHours == 0) {
-        gameHoursUI.innerText = `00`;
-      }
-      if (gameDays == 0) {
-        gameDaysUI.innerHTML = `Day 0 <br>`;
-      }
+      gameMinutesUI.innerText = `${gameMinutes}`;
     }
-  }, gamePace);
+  }
 }
 
 function pauseGame() {
@@ -69,13 +86,7 @@ function pauseGame() {
   gameStatus = 'paused'
 }
 
-function gameHoursTicker() {
-  gameHours += 1;
-}
-
-addEventListener('keypress', function (e) {
-  if (event.code === 'Space') { togglePausePlay(); }
-});
+addEventListener('keypress', function (e) { if (event.code === 'Space') { togglePausePlay(); } });
 
 function togglePausePlay() {
   if (gameStatus == 'running') {
@@ -90,40 +101,40 @@ function togglePausePlay() {
 function manipulateTime(t) {
   pauseGame();
   if (t == 1) {
-    gamePace = 625;
+    gameSpeed = 625;
   } else if (t == 2) {
-    gamePace = 312.5;
+    gameSpeed = 312.5;
   } else if (t == 3) {
-    gamePace = 208.3;
+    gameSpeed = 208.3;
   } else if (t == 4) {
-    gamePace = 156.3;
+    gameSpeed = 156.3;
   } else if (t == 10) {
-    gamePace = 62.5;
+    gameSpeed = 62.5;
   } else if (t == 100) {
-    gamePace = 6.25;
+    gameSpeed = 6.25;
   } else if (t == 1000) {
-    gamePace = 0.625;
+    gameSpeed = 0.625;
   }
   startTimer();
 }
 
 // Game Background
-function updateGameBackground() {
-  if (gameHours == 0 || gameHours == 1 || gameHours == 2 || gameHours == 24) {
+function initGameBackground() {
+  if (savedHours == 0 || savedHours == 1 || savedHours == 2 || savedHours == 24) {
     document.body.style.backgroundImage = `url('assets/backgrounds/7.png')`;
-  } else if (gameHours == 3 || gameHours == 4 || gameHours == 5) {
+  } else if (savedHours == 3 || savedHours == 4 || savedHours == 5) {
     document.body.style.backgroundImage = "url('assets/backgrounds/8.png')";
-  } else if (gameHours == 6 || gameHours == 7 || gameHours == 8) {
+  } else if (savedHours == 6 || savedHours == 7 || savedHours == 8) {
     document.body.style.backgroundImage = "url('assets/backgrounds/1.png')";
-  } else if (gameHours == 9 || gameHours == 10 || gameHours == 11) {
+  } else if (savedHours == 9 || savedHours == 10 || savedHours == 11) {
     document.body.style.backgroundImage = "url('assets/backgrounds/2.png')";
-  } else if (gameHours == 12 || gameHours == 13 || gameHours == 14) {
+  } else if (savedHours == 12 || savedHours == 13 || savedHours == 14) {
     document.body.style.backgroundImage = "url('assets/backgrounds/3.png')";
-  } else if (gameHours == 15 || gameHours == 16 || gameHours == 17) {
+  } else if (savedHours == 15 || savedHours == 16 || savedHours == 17) {
     document.body.style.backgroundImage = "url('assets/backgrounds/4.png')";
-  } else if (gameHours == 18 || gameHours == 19 || gameHours == 20) {
+  } else if (savedHours == 18 || savedHours == 19 || savedHours == 20) {
     document.body.style.backgroundImage = "url('assets/backgrounds/5.png')";
-  } else if (gameHours == 21 || gameHours == 22 || gameHours == 23) {
+  } else if (savedHours == 21 || savedHours == 22 || savedHours == 23) {
     document.body.style.backgroundImage = "url('assets/backgrounds/6.png')";
   }
 }
