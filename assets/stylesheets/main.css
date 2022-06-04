@@ -1,5 +1,6 @@
 body {
   background-color: #121212;
+  font-family: 'VT323', monospace;
 }
 
 .game-timer-ui {
@@ -11,4 +12,5 @@ body {
   max-width: 20%;
   font-size: 25px;
   padding: 10px;
+  font-family: 'VT323', monospace;
 }

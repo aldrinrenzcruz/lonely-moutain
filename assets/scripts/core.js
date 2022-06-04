@@ -14,37 +14,43 @@ const gameHoursUI = document.querySelector('#game-hours-ui');
 let gameMinutes = 0;
 let gameHours = 0;
 
-setInterval(gameMinutesTicker, 625);
+let timerInterval;
 
-function gameMinutesTicker() {
-  gameMinutes++;
-  updateGameBackground();
+function startTimer() {
+  timerInterval = setInterval(function () {
+    gameMinutes++;
+    updateGameBackground();
 
-  // Pad 0 for minutes if less than 10
-  if (gameHours < 10) {
-    gameHoursUI.innerText = `0${gameHours}`;
-  } else {
-    gameHoursUI.innerText = `${gameHours}`;
-  }
-  // Resets game hour
-  if (gameHours > 23) {
-    gameHours = 0;
-  }
-
-  if (gameMinutes > 59) {
-    gameMinutes = 0;
-    gameMinutesUI.innerText = `00`;
-    gameHoursTicker();
-  } else {
-    if (gameMinutes < 10) {
-      gameMinutesUI.innerText = `0${gameMinutes}`;
+    // Pad 0 for minutes if less than 10
+    if (gameHours < 10) {
+      gameHoursUI.innerText = `0${gameHours}`;
     } else {
-      gameMinutesUI.innerText = `${gameMinutes}`;
+      gameHoursUI.innerText = `${gameHours}`;
     }
-    if (gameHours == 0) {
-      gameHoursUI.innerText = `00`;
+    // Resets game hour
+    if (gameHours > 23) {
+      gameHours = 0;
     }
-  }
+
+    if (gameMinutes > 59) {
+      gameMinutes = 0;
+      gameMinutesUI.innerText = `00`;
+      gameHoursTicker();
+    } else {
+      if (gameMinutes < 10) {
+        gameMinutesUI.innerText = `0${gameMinutes}`;
+      } else {
+        gameMinutesUI.innerText = `${gameMinutes}`;
+      }
+      if (gameHours == 0) {
+        gameHoursUI.innerText = `00`;
+      }
+    }
+  }, 625);
+}
+
+function pauseGame() {
+  clearInterval(timerInterval);
 }
 
 function gameHoursTicker() {
@@ -71,26 +77,3 @@ function updateGameBackground() {
     document.body.style.backgroundImage = "url('assets/backgrounds/6.png')";
   }
 }
-
-// let realSeconds = 0;
-// let realMinutes = 0;
-// setInterval(realSecondsTicker, 1000);
-// setInterval(realMinutesTicker, 60000);
-
-// function realSecondsTicker() {
-//   realSeconds++;
-//   secondsUI.innerText = `${realSeconds}s.`;
-//   updateGameBackground();
-
-//   if (gameHours == 0) {
-//     gameHoursUI.innerText = `0`;
-//   }
-//   if (gameMinutes == 0) {
-//     gameMinutesUI.innerText = `0`;
-//   }
-// }
-
-// function realMinutesTicker() {
-//   realMinutes++;
-//   minutesUI.innerText = `${realMinutes}m.`;
-// }
