@@ -10,17 +10,26 @@
 
 const gameMinutesUI = document.querySelector('#game-minutes-ui');
 const gameHoursUI = document.querySelector('#game-hours-ui');
+const gameDaysUI = document.querySelector('#game-days-ui');
+const pausePlayBtn = document.querySelector('#pause-play-btn');
 
+let gamePace = 625;
 let gameMinutes = 0;
 let gameHours = 0;
-let gamePace = 625;
+let gameDays = 0;
 
 let timerInterval;
+let gameStatus = 'paused';
+
+window.addEventListener('load', (event) => {
+  startTimer();
+});
 
 function startTimer() {
   timerInterval = setInterval(function () {
     gameMinutes++;
     updateGameBackground();
+    gameStatus = 'running'
 
     // Pad 0 for minutes if less than 10
     if (gameHours < 10) {
@@ -31,6 +40,8 @@ function startTimer() {
     // Resets game hour
     if (gameHours > 23) {
       gameHours = 0;
+      gameDays += 1;
+      gameDaysUI.innerHTML = `Day ${gameDays} <br>`;
     }
 
     if (gameMinutes > 59) {
@@ -46,43 +57,48 @@ function startTimer() {
       if (gameHours == 0) {
         gameHoursUI.innerText = `00`;
       }
+      if (gameDays == 0) {
+        gameDaysUI.innerHTML = `Day 0 <br>`;
+      }
     }
   }, gamePace);
 }
 
 function pauseGame() {
   clearInterval(timerInterval);
+  gameStatus = 'paused'
 }
 
 function gameHoursTicker() {
   gameHours += 1;
 }
 
-function manipulateTime(t){
+function togglePausePlay() {
+  if (gameStatus == 'running') {
+    pauseGame();
+    pausePlayBtn.innerText = 'Resume';
+  } else if (gameStatus == 'paused') {
+    startTimer();
+    pausePlayBtn.innerText = 'Pause';
+  }
+}
+
+function manipulateTime(t) {
   pauseGame();
   if (t == 1) {
     gamePace = 625;
-    console.log('time is not x1');
-  }
-  if (t == 2) {
+  } else if (t == 2) {
     gamePace = 312.5;
-    console.log('time is not x2');
-  }
-  if (t == 3) {
+  } else if (t == 3) {
     gamePace = 208.3;
-    console.log('time is not x3');
-  }
-  if (t == 4) {
+  } else if (t == 4) {
     gamePace = 156.3;
-    console.log('time is not x4');
-  }
-  if (t == 10) {
+  } else if (t == 10) {
     gamePace = 62.5;
-    console.log('time is not x10');
-  }
-  if (t == 100) {
+  } else if (t == 100) {
     gamePace = 6.25;
-    console.log('time is not x10');
+  } else if (t == 1000) {
+    gamePace = 0.625;
   }
   startTimer();
 }
