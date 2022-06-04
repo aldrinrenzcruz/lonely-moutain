@@ -3,6 +3,10 @@ body {
   font-family: 'VT323', monospace;
 }
 
+button {
+  font-size: 20px;
+  font-family: 'VT323', monospace;
+}
 .game-timer-ui {
   position: absolute;
   top: 0;
@@ -13,4 +17,14 @@ body {
   font-size: 25px;
   padding: 10px;
   font-family: 'VT323', monospace;
+}
+
+.game-debugger {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  font-family: 'VT323', monospace;
+  background-color: #ccc;
+  width: fit-content;
 }

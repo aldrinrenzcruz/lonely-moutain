@@ -13,6 +13,7 @@ const gameHoursUI = document.querySelector('#game-hours-ui');
 
 let gameMinutes = 0;
 let gameHours = 0;
+let gamePace = 625;
 
 let timerInterval;
 
@@ -46,7 +47,7 @@ function startTimer() {
         gameHoursUI.innerText = `00`;
       }
     }
-  }, 625);
+  }, gamePace);
 }
 
 function pauseGame() {
@@ -55,6 +56,35 @@ function pauseGame() {
 
 function gameHoursTicker() {
   gameHours += 1;
+}
+
+function manipulateTime(t){
+  pauseGame();
+  if (t == 1) {
+    gamePace = 625;
+    console.log('time is not x1');
+  }
+  if (t == 2) {
+    gamePace = 312.5;
+    console.log('time is not x2');
+  }
+  if (t == 3) {
+    gamePace = 208.3;
+    console.log('time is not x3');
+  }
+  if (t == 4) {
+    gamePace = 156.3;
+    console.log('time is not x4');
+  }
+  if (t == 10) {
+    gamePace = 62.5;
+    console.log('time is not x10');
+  }
+  if (t == 100) {
+    gamePace = 6.25;
+    console.log('time is not x10');
+  }
+  startTimer();
 }
 
 // Game Background
