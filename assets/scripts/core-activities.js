@@ -1,13 +1,14 @@
 let woodCuttingCounter = 0;
 let woodCuttingHitsRequired = 10;
+let woodCuttingEnergyCostPerClick = 1;
 
 addEventListener('keypress', function (e) { if (event.code === 'KeyE') { woodCuttingActivity(); } });
 
 function woodCuttingActivity() {
-  if (savedEnergy > 0) {
-    woodCuttingCounter++;
+  if (savedEnergy >= woodCuttingEnergyCostPerClick) {
+    ++woodCuttingCounter;
+    console.log(woodCuttingCounter)
     localStorage.setItem('total_player_energy', --savedEnergy);
-    console.log(localStorage.getItem('total_player_energy'));
   } else {
     document.querySelector('#cut-tree-btn').innerText = 'Not enough energy';
   }
