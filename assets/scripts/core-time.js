@@ -44,9 +44,7 @@ function initHours() {
 }
 
 function initMinutes() {
-  if (localStorage.getItem('elapsed_game_minutes') !== null) {
-    localStorage.setItem('elapsed_game_minutes', savedMinutes++);
-  }
+  localStorage.setItem('elapsed_game_minutes', savedMinutes++);
   if (savedMinutes > 59) {
     savedMinutes = 0;
     localStorage.setItem('elapsed_game_hours', savedHours++);
