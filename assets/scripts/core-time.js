@@ -103,21 +103,7 @@ function togglePausePlay() {
 
 function manipulateTime(t) {
   pauseGame();
-  if (t == 1) {
-    gameSpeed = 625;
-  } else if (t == 2) {
-    gameSpeed = 312.5;
-  } else if (t == 3) {
-    gameSpeed = 208.3;
-  } else if (t == 4) {
-    gameSpeed = 156.3;
-  } else if (t == 10) {
-    gameSpeed = 62.5;
-  } else if (t == 100) {
-    gameSpeed = 6.25;
-  } else if (t == 1000) {
-    gameSpeed = 0.625;
-  }
+  gameSpeed = 625 / t;
   initGame();
 }
 

@@ -15,39 +15,46 @@
 
 <body>
 
-  <div class="player-stats">
-    <img src="assets/art/coin.png">
-    <span class="stats-text"><a id="player-coins-ui"></a></span>
-  </div>
-  <div class="player-stats" style="margin-top: 45px;">
-    <img src="assets/art/energy.png">
-    <span class="stats-text"><a id="player-energy-ui"></a>/<a id="player-max-energy-ui"></a></span>
-  </div>
-  <div class="player-stats" style="margin-top: 90px;">
-    <img src="assets/art/log.png">
-    <span class="stats-text"><a id="gathered-logs-ui"></a></span>
-  </div>
-
-  <div class="game-timer-ui">
-    <a id="game-years-ui"></a>
-    <a id="game-days-ui"></a>
-    <a id="game-hours-ui"></a>:
-    <a id="game-minutes-ui"></a>
-  </div>
-
   <div class="game-debugger">
-    <button id="pause-play-btn" onclick="togglePausePlay();">Pause</button>
-    <button onclick="manipulateTime(1);">1x</button>
-    <button onclick="manipulateTime(2);">2x</button>
-    <button onclick="manipulateTime(3);">3x</button>
-    <button onclick="manipulateTime(4);">4x</button>
-    <button onclick="manipulateTime(10);">10x</button>
-    <button onclick="manipulateTime(100);">100x</button>
-    <button onclick="manipulateTime(1000);">Max</button>
+    <a href="play.html">Start</a>
   </div>
 
-  <script src="assets/scripts/core-manager.js"></script>
-  <script src="assets/scripts/core-time.js"></script>
+  <script>
+    window.addEventListener('load', (event) => {
+      localStorage.setItem('game_prepped', true);
+      if (localStorage.getItem('elapsed_game_years') === null) {
+        localStorage.setItem('elapsed_game_years', 0);
+      }
+
+      if (localStorage.getItem('elapsed_game_days') === null) {
+        localStorage.setItem('elapsed_game_days', 0);
+      }
+
+      if (localStorage.getItem('elapsed_game_hours') === null) {
+        localStorage.setItem('elapsed_game_hours', 6);
+      }
+
+      if (localStorage.getItem('elapsed_game_minutes') === null) {
+        localStorage.setItem('elapsed_game_minutes', 0);
+      }
+
+      if (localStorage.getItem('total_player_coins') === null) {
+        localStorage.setItem('total_player_coins', 0);
+      }
+
+      if (localStorage.getItem('total_player_max_energy') === null) {
+        localStorage.setItem('total_player_max_energy', 100);
+      }
+
+      if (localStorage.getItem('total_player_energy') === null) {
+        localStorage.setItem('total_player_energy', 100);
+      }
+
+      if (localStorage.getItem('total_gathered_logs') === null) {
+        localStorage.setItem('total_gathered_logs', 0);
+      }
+    });
+  </script>
 
 </body>
 

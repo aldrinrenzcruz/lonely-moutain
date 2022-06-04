@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lonely Mountain</title>
+  <link rel="stylesheet" href="assets/stylesheets/main.css">
+  <link rel="icon" href="assets/favicon/favicon-32x32.png">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <script>
+    if (localStorage.getItem('game_prepped') === null) {
+      window.open("index.html","_self")
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="player-stats">
+    <img src="assets/art/coin.png">
+    <span class="stats-text"><a id="player-coins-ui"></a></span>
+  </div>
+  <div class="player-stats" style="margin-top: 45px;">
+    <img src="assets/art/energy.png">
+    <span class="stats-text"><a id="player-energy-ui"></a>/<a id="player-max-energy-ui"></a></span>
+  </div>
+  <div class="player-stats" style="margin-top: 90px;">
+    <img src="assets/art/log.png">
+    <span class="stats-text"><a id="gathered-logs-ui"></a></span>
+  </div>
+
+  <div class="game-timer-ui">
+    <a id="game-years-ui"></a>
+    <a id="game-days-ui"></a>
+    <a id="game-hours-ui"></a>:
+    <a id="game-minutes-ui"></a>
+  </div>
+
+  <div class="game-debugger">
+    <button id="pause-play-btn" onclick="togglePausePlay();">Pause</button>
+    <button onclick="manipulateTime(1);">1x</button>
+    <button onclick="manipulateTime(2);">2x</button>
+    <button onclick="manipulateTime(3);">3x</button>
+    <button onclick="manipulateTime(4);">4x</button>
+    <button onclick="manipulateTime(10);">10x</button>
+    <button onclick="manipulateTime(100);">100x</button>
+    <button onclick="manipulateTime(1000);">Max</button>
+  </div>
+
+  <script src="assets/scripts/core-manager.js"></script>
+  <script src="assets/scripts/core-time.js"></script>
+
+</body>
+
+</html>
