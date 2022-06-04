@@ -24,6 +24,7 @@ html {
 
 body {
   background-color: #121212;
+  /* background-image: url(../backgrounds/mountain.jpg); */
   font-family: 'VT323', monospace;
 }
 
@@ -90,4 +91,15 @@ img {
   font-size: 20px;
   background-color: #222;
   color: #fbfbfb;
+}
+
+#cut-tree-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: #121212;
+  color: #fbfbfb;
+  cursor: pointer;
 }
