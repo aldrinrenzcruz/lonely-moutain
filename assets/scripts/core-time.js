@@ -30,7 +30,7 @@ function initDays() {
   if (savedDays > 365) {
     savedDays = 0;
     // Increment Year + 1
-    localStorage.setItem('elapsed_game_years', savedYears++);
+    localStorage.setItem('elapsed_game_years', ++savedYears);
   }
 }
 
@@ -39,15 +39,15 @@ function initHours() {
   if (savedHours > 23) {
     savedHours = 0;
     // Increment Day + 1
-    localStorage.setItem('elapsed_game_days', savedDays++);
+    localStorage.setItem('elapsed_game_days', ++savedDays);
   }
 }
 
 function initMinutes() {
-  localStorage.setItem('elapsed_game_minutes', savedMinutes++);
+  localStorage.setItem('elapsed_game_minutes', ++savedMinutes);
   if (savedMinutes > 59) {
     savedMinutes = 0;
-    localStorage.setItem('elapsed_game_hours', savedHours++);
+    localStorage.setItem('elapsed_game_hours', ++savedHours);
   }
 }
 

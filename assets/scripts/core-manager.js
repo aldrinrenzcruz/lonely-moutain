@@ -4,6 +4,10 @@ window.addEventListener('load', (event) => {
 
 function initGame() {
   timerInterval = setInterval(function () {
+    if (localStorage.getItem('game_prepped') === null) {
+      window.open("index.html", "_self")
+    }
+
     gameStatus = 'running'
     initGameBackground();
     initDays();
