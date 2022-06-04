@@ -47,7 +47,7 @@ function initDays() {
 
 function initHours() {
   if (localStorage.getItem('elapsed_game_hours') === null) {
-    localStorage.setItem('elapsed_game_hours', 0);
+    localStorage.setItem('elapsed_game_hours', 6);
     gameHoursUI.innerText = `${savedHours}`;
   } else {
     if (savedHours < 10) {

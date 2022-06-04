@@ -7,6 +7,11 @@ button {
   font-size: 20px;
   font-family: 'VT323', monospace;
 }
+
+img {
+  image-rendering: pixelated;
+}
+
 .game-timer-ui {
   position: absolute;
   top: 0;
@@ -27,4 +32,21 @@ button {
   font-family: 'VT323', monospace;
   background-color: #ccc;
   width: fit-content;
+}
+
+.player-stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #555;
+  color: #fbfbfb;
+  width: 8%;
+  font-size: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.stats-text {
+  margin-left: 5px;
 }
