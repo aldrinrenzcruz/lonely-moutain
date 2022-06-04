@@ -1,6 +1,34 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-y: hidden;
+}
+
+.donothighlight {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 body {
   background-color: #121212;
   font-family: 'VT323', monospace;
+}
+
+a {
+  -webkit-user-drag: none;
 }
 
 button {
@@ -10,6 +38,11 @@ button {
 
 img {
   image-rendering: pixelated;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .game-timer-ui {
