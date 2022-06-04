@@ -1,0 +1,14 @@
+body {
+  background-color: #121212;
+}
+
+.game-timer-ui {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #121212;
+  color: #fbfbfb;
+  max-width: 20%;
+  font-size: 25px;
+  padding: 10px;
+}

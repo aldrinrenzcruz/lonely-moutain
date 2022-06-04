@@ -1,6 +1,6 @@
 /**
- * Game cycle == 15m(900,000ms) in real-world time 
- * Game hour == 37.5s(37500ms) RT
+ * Game cycle == 15m (900,000ms)
+ * Game hour == 37.5s (37500ms)
  * Game minute = 625ms
  * Every 3 minutes, wallpaper changes
  * 
@@ -12,7 +12,7 @@ const gameMinutesUI = document.querySelector('#game-minutes-ui');
 const gameHoursUI = document.querySelector('#game-hours-ui');
 
 let gameMinutes = 0;
-let gameHours = 23;
+let gameHours = 0;
 
 setInterval(gameMinutesTicker, 625);
 
@@ -20,7 +20,7 @@ function gameMinutesTicker() {
   gameMinutes++;
   updateGameBackground();
 
-  // Append 0 for minutes if less than 10
+  // Pad 0 for minutes if less than 10
   if (gameHours < 10) {
     gameHoursUI.innerText = `0${gameHours}`;
   } else {
@@ -71,8 +71,6 @@ function updateGameBackground() {
     document.body.style.backgroundImage = "url('assets/backgrounds/6.png')";
   }
 }
-
-
 
 // let realSeconds = 0;
 // let realMinutes = 0;
