@@ -50,13 +50,14 @@
         localStorage.setItem('total_player_energy', 100);
       }
 
+      if (localStorage.getItem('generated_trees') === null) {
+        localStorage.setItem('generated_trees', 500);
+      }
+
       if (localStorage.getItem('total_gathered_logs') === null) {
         localStorage.setItem('total_gathered_logs', 0);
       }
 
-      if (localStorage.getItem('generated_trees') === null) {
-        localStorage.setItem('generated_trees', 500);
-      }
     });
   </script>
 

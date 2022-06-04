@@ -30,6 +30,8 @@ let savedLogs = parseInt(localStorage.getItem('total_gathered_logs'));
 const generatedTreesUI = document.querySelector('#generated-trees-ui');
 let savedTrees = parseInt(localStorage.getItem('generated_trees'));
 
+let treesGrowthRatePerDay = 2;
+
 function uiUpdater() {
   gameYearsUI.innerHTML = `Year ${savedYears}<br>`;
   gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
