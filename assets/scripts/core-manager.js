@@ -4,6 +4,7 @@ window.addEventListener('load', (event) => {
 
 function initGame() {
   timerInterval = setInterval(function () {
+    uiUpdater();
     gameStatus = 'running'
     initGameBackground();
     initDays();
