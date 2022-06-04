@@ -54,7 +54,6 @@ img {
   width: fit-content;
   font-size: 25px;
   padding: 10px;
-  font-family: 'VT323', monospace;
 }
 
 .game-debugger {
@@ -62,7 +61,6 @@ img {
   bottom: 0;
   left: 0;
   padding: 10px;
-  font-family: 'VT323', monospace;
   background-color: #ccc;
   width: fit-content;
 }
@@ -82,4 +80,14 @@ img {
 
 .stats-text {
   margin-left: 5px;
+}
+
+.game-resources {
+  position: absolute;
+  top: 2;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 20px;
+  background-color: #222;
+  color: #fbfbfb;
 }

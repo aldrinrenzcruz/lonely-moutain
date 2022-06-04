@@ -9,58 +9,49 @@
  */
 
 const gameMinutesUI = document.querySelector('#game-minutes-ui');
+let savedMinutes = parseInt(localStorage.getItem('elapsed_game_minutes'));
+
 const gameHoursUI = document.querySelector('#game-hours-ui');
+let savedHours = parseInt(localStorage.getItem('elapsed_game_hours'));
+
 const gameDaysUI = document.querySelector('#game-days-ui');
+let savedDays = parseInt(localStorage.getItem('elapsed_game_days'));
+
 const gameYearsUI = document.querySelector('#game-years-ui');
+let savedYears = parseInt(localStorage.getItem('elapsed_game_years'));
+
 const pausePlayBtn = document.querySelector('#pause-play-btn');
 
 let gameSpeed = 625;
 let gameStatus = 'paused';
-let savedMinutes = parseInt(localStorage.getItem('elapsed_game_minutes'));
-let savedHours = parseInt(localStorage.getItem('elapsed_game_hours'));
-let savedDays = parseInt(localStorage.getItem('elapsed_game_days'));
-let savedYears = parseInt(localStorage.getItem('elapsed_game_years'));
 
 function initYears() {
   if (localStorage.getItem('elapsed_game_years') === null) {
     localStorage.setItem('elapsed_game_years', 0);
-    gameYearsUI.innerHTML = `Year ${savedYears}<br>`;
-  } else {
-    gameYearsUI.innerHTML = `Year ${savedYears}<br>`;
   }
 }
 
 function initDays() {
   if (localStorage.getItem('elapsed_game_days') === null) {
     localStorage.setItem('elapsed_game_days', 0);
-    gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
-  } else {
-    gameDaysUI.innerHTML = `Day ${savedDays}<br>`;
   }
   // Reset Year Cycle
   if (savedDays > 365) {
     savedDays = 0;
-    // Increment Day + 1
-    localStorage.setItem('elapsed_game_years', savedYears += 1);
+    // Increment Year + 1
+    localStorage.setItem('elapsed_game_years', savedYears++);
   }
 }
 
 function initHours() {
   if (localStorage.getItem('elapsed_game_hours') === null) {
     localStorage.setItem('elapsed_game_hours', 6);
-    gameHoursUI.innerText = `${savedHours}`;
-  } else {
-    if (savedHours < 10) {
-      gameHoursUI.innerText = `0${savedHours}`;
-    } else {
-      gameHoursUI.innerText = `${savedHours}`;
-    }
   }
   // Reset Day Cycle
   if (savedHours > 23) {
     savedHours = 0;
     // Increment Day + 1
-    localStorage.setItem('elapsed_game_days', savedDays += 1);
+    localStorage.setItem('elapsed_game_days', savedDays++);
   }
 }
 
@@ -70,17 +61,10 @@ function initMinutes() {
   }
   if (localStorage.getItem('elapsed_game_minutes') === null) {
     localStorage.setItem('elapsed_game_minutes', 0);
-    gameMinutesUI.innerText = `${savedMinutes}`;
-  } else {
-    if (savedMinutes < 10) {
-      gameMinutesUI.innerText = `0${savedMinutes}`;
-    } else {
-      gameMinutesUI.innerText = `${savedMinutes}`;
-    }
   }
   if (savedMinutes > 59) {
     savedMinutes = 0;
-    localStorage.setItem('elapsed_game_hours', savedHours += 1);
+    localStorage.setItem('elapsed_game_hours', savedHours++);
   }
 }
 

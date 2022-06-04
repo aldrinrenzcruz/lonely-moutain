@@ -18,9 +18,9 @@
   </script>
 </head>
 
-<body>
+<body class="donothighlight">
 
-  <div class="stats donothighlight">
+  <div class="stats">
     <div class="player-stats">
       <img src="assets/art/coin.png">
       <span class="stats-text"><a id="player-coins-ui"></a></span>
@@ -35,14 +35,14 @@
     </div>
   </div>
 
-  <div class="game-timer-ui donothighlight">
+  <div class="game-timer-ui">
     <a id="game-years-ui"></a>
     <a id="game-days-ui"></a>
     <a id="game-hours-ui"></a>:
     <a id="game-minutes-ui"></a>
   </div>
 
-  <div class="game-debugger donothighlight">
+  <div class="game-debugger">
     <button id="pause-play-btn" onclick="togglePausePlay();">Pause</button>
     <button onclick="manipulateTime(1);">1x</button>
     <button onclick="manipulateTime(2);">2x</button>
@@ -52,6 +52,8 @@
     <button onclick="manipulateTime(100);">100x</button>
     <button onclick="manipulateTime(1000);">Max</button>
   </div>
+
+  <div class="game-resources"><a id="generated-trees-ui"></a></div>
 
   <script src="assets/scripts/core-manager.js"></script>
   <script src="assets/scripts/core-time.js"></script>
