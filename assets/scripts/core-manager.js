@@ -15,7 +15,6 @@ function initGame() {
     initMinutes();
 
     uiUpdater();
-    generateTreesDaily();
 
   }, gameSpeed);
 }

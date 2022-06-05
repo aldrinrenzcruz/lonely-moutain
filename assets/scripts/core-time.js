@@ -25,6 +25,8 @@ const pausePlayBtn = document.querySelector('#pause-play-btn');
 let gameSpeed = 625;
 let gameStatus = 'paused';
 
+treesGrowthRatePerDay = 2;
+
 function initDays() {
   // Reset Year Cycle
   if (savedDays > 365) {
@@ -40,6 +42,7 @@ function initHours() {
     savedHours = 0;
     // Increment Day + 1
     localStorage.setItem('elapsed_game_days', ++savedDays);
+    localStorage.setItem('generated_trees', savedTrees += treesGrowthRatePerDay);
   }
 }
 

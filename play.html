@@ -54,11 +54,14 @@
 
   <div class="game-resources"><a id="generated-trees-ui"></a></div>
 
-  <button id="cut-tree-btn" onclick="activityWithEnergyCost('woodcutting');">Cut Tree (E)</button>
+  <div class="character-menu">
+    <button class="activity-btn" id="cut-tree-btn" onclick="activityWithEnergyCost('woodcutting');">Cut Tree (E)</button>
+    <button class="activity-btn" id="" onclick="charFullSleep();">Sleep</button>
+  </div>
+ 
 
   <script src="assets/scripts/core-manager.js"></script>
   <script src="assets/scripts/core-time.js"></script>
-  <script src="assets/scripts/core-enviroment.js"></script>
   <script src="assets/scripts/core-activities.js"></script>
 
 </body>

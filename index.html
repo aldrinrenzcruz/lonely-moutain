@@ -23,11 +23,11 @@
     window.addEventListener('load', (event) => {
       localStorage.setItem('game_prepped', true);
       if (localStorage.getItem('elapsed_game_years') === null) {
-        localStorage.setItem('elapsed_game_years', 0);
+        localStorage.setItem('elapsed_game_years', 1);
       }
 
       if (localStorage.getItem('elapsed_game_days') === null) {
-        localStorage.setItem('elapsed_game_days', 0);
+        localStorage.setItem('elapsed_game_days', 1);
       }
 
       if (localStorage.getItem('elapsed_game_hours') === null) {

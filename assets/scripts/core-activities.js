@@ -34,3 +34,10 @@ function woodCutting() {
     localStorage.setItem('total_gathered_logs', ++savedLogs);
   }
 }
+
+function charFullSleep() {
+  if (confirm("Are you sure you want to sleep? This will skip the time by 6hrs, but give you full energy.") == true) {
+    localStorage.setItem('total_player_energy', savedEnergy = savedMaxEnergy);
+    localStorage.setItem('elapsed_game_hours', savedHours += 6);
+  }
+}
