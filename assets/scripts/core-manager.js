@@ -57,3 +57,9 @@ function uiUpdater() {
     gameMinutesUI.innerText = `0${savedMinutes}`;
   }
 }
+
+function playBackgroundMusic(title) {
+  let audio = new Audio(title);
+  audio.loop = true;
+  audio.play();
+}
