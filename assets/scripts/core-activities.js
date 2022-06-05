@@ -3,7 +3,7 @@ let woodCuttingHitsRequired = 10;
 let woodCuttingEnergyCostPerClick = 1;
 
 
-// addEventListener('keypress', function (e) { if (event.code === 'KeyE') { woodCuttingActivity(); } });
+addEventListener('keypress', function (e) { if (event.code === 'KeyE') { activityWithEnergyCost('woodcutting'); } });
 
 function activityWithEnergyCost(activity) {
   if (gameStatus == 'running') {
@@ -25,7 +25,6 @@ function woodCutting() {
   if (savedEnergy >= woodCuttingEnergyCostPerClick) {
     ++woodCuttingCounter;
     localStorage.setItem('total_player_energy', --savedEnergy);
-    document.querySelector('#cut-tree-btn').innerText = 'Cut Tree';
   } else {
     alert('Not enough energy.');
   }
