@@ -23,9 +23,47 @@ html {
 }
 
 body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-color: #121212;
-  /* background-image: url(../backgrounds/mountain.jpg); */
   font-family: 'VT323', monospace;
+}
+
+#top, #bottom, #left, #right {
+  background: #121212;
+  position: fixed;
+}
+
+#left, #right {
+  top: 0;
+  bottom: 0;
+  width: 10px;
+}
+
+#left {
+  left: 0;
+}
+
+#right {
+  right: 0;
+}
+
+#top, #bottom {
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+#top {
+  top: 0;
+}
+
+#bottom {
+  bottom: 0;
 }
 
 a {
